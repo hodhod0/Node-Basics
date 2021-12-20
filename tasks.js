@@ -74,8 +74,13 @@ function unknownCommand(c){
 function hello(){
   console.log('hello!')
 }
+/**
+ * list possible commands
+ *
+ * @returns {void}
+ */
 function help(){
-  console.log('quit\nexit\nhelp\nhello');
+  console.log('possible command\nquit\nexit\nhelp\nhello');
 }
 
 
