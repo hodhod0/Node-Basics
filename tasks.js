@@ -38,6 +38,13 @@ function onDataReceived(text) {
   if (text === 'quit\n') {
     quit();
   }
+  else if (text === 'exit\n'){
+    exit();
+  }
+  else if (text === 'help\n'){
+    help();
+  }
+
   else if(text === 'hello\n'){
     hello();
   }
@@ -67,6 +74,10 @@ function unknownCommand(c){
 function hello(){
   console.log('hello!')
 }
+function help(){
+  console.log('quit\nexit\nhelp\nhello');
+}
+
 
 
 /**
@@ -74,10 +85,11 @@ function hello(){
  *
  * @returns {void}
  */
-function quit(){
+function exit(){
   console.log('Quitting now, goodbye!')
   process.exit();
 }
+
 
 // The following line starts the application
 startApp("Hodhod Alameddine")
