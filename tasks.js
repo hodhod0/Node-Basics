@@ -78,7 +78,7 @@ function unknownCommand(c) {
  * @returns {void}
  */
 function help() {
-  console.log("possible command\nquit\nexit\nhelp\nhello");
+  console.log("possible command\nquit\nexit\nhelp\nhello,\nhello:its a command that prints hello alone and once you add something with alone it will type it too");
 }
 
 /**
