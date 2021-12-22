@@ -31,33 +31,24 @@ function startApp(name) {
  * @param  {string} text data typed by the user
  * @returns {void}
  */
- var lists = ["Ahmad","Hadi","Nour"]
- function onDataReceived(text) {
+var lists = ["Ahmad", "Hadi", "Nour","Salim"];
+function onDataReceived(text) {
   text = text.trim();
-  if (text === 'quit') {
+  if (text === "quit") {
     quit();
-  }
-  else if (text === 'exit'){
+  } else if (text === "exit") {
     exit();
-  }
-  else if(text.split(" ").shift() === 'hello'){
+  } else if (text.split(" ").shift() === "hello") {
     hello(text);
-  }
-  else if(text === 'help'){
+  } else if (text === "help") {
     help();
-  }
-  else if(text === 'list'){
+  } else if (text === "list") {
     list();
-  }
-  else if(text === 'add'){
-    add();
-  }
-  else if(text === 'remove'){
+  } else if (text.trim().split(" ")[0] === "add") {
+    add(text);
+  } else if (text === "remove") {
     remove();
-  }
-
-
-  else{
+  } else {
     unknownCommand(text);
   }
 }
@@ -78,24 +69,30 @@ function unknownCommand(c) {
  *@param {string}
  * @returns {void}
  */
- function hello(text){
-  console.log(text + '!')
+function hello(text) {
+  console.log(text + "!");
 }
- 
+
 /**
  * list possible commands
  *
  * @returns {void}
  */
 function help() {
-  console.log("possible command\nquit\nexit\nhelp\nhello,\nhello:its a command that prints hello alone and once you add something with alone it will type it too");
+  console.log(
+    "possible command\nquit\nexit\nhelp\nhello,\nhello:its a command that prints hello alone and once you add something with alone it will type it too"
+  );
 }
 
 function list() {
- lists.forEach((element ,index) => {
-  console.log(`${index +1}-${element}`);
+  lists.forEach((element, i) => {
+    console.log(`${i + 1}-${element}`);
   });
-  
+}
+
+function add (text){
+  let inpt = text.split(" ");
+  lists.push(inpt[1])
 }
 
 /**
