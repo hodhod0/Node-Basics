@@ -31,7 +31,7 @@ function startApp(name) {
  * @param  {string} text data typed by the user
  * @returns {void}
  */
-var lists = ["Ahmad", "Hadi", "Nour","Salim"];
+var lists = ["Ahmad", "Hadi", "Nour", "Salim"];
 function onDataReceived(text) {
   text = text.trim();
   if (text === "quit") {
@@ -46,8 +46,10 @@ function onDataReceived(text) {
     list();
   } else if (text.trim().split(" ")[0] === "add") {
     add(text);
-  } else if (text.trim().split(" ")[0]  === "remove") {
+  } else if (text.trim().split(" ")[0] === "remove") {
     remove(text);
+  } else if (text.trim().split(" ")[0] === "edit") {
+    edit(text);
   } else {
     unknownCommand(text);
   }
@@ -80,7 +82,7 @@ function hello(text) {
  */
 function help() {
   console.log(
-    "possible command\nquit\nexit\nhelp\nhello\nadd\nremove\nlist,\nhello:its a command that prints hello alone and once you add something with alone it will type it too"
+    "possible command\nquit\nexit\nhelp\nhello\nadd\nremove\nedit\nlist,\nhello:its a command that prints hello alone and once you add something with alone it will type it too"
   );
 }
 
@@ -90,21 +92,38 @@ function list() {
   });
 }
 
-function add (text){
+function add(text) {
   let inpt = text.split(" ");
-  lists.push(inpt[1])
+  lists.push(inpt[1]);
 }
 
-function remove(text){
+function remove(text) {
   var index = text.split(" ")[1] - 1;
-  if(index > lists.length){
+  if (index > lists.length) {
     console.log("not Found");
-  }else if (index === "" ){ 
+  } else if (index === "") {
     lists.pop();
-  }else {
-    lists.splice(index,1);
+  } else {
+    lists.splice(index, 1);
   }
-  console.log(lists)
+  console.log(lists);
+}
+
+function edit(text) {
+  var parts = text.split(" ").length;
+
+  if (parts < 1) {
+    console.log("at least one parameter missing");
+  } else if (parts > 2) {
+    var newText = text.split(" ")[2];
+    var index = text.split(" ")[1]-1;
+    lists.splice(index , 1, newText);
+  } else {
+    var newText = text.split(" ")[1];
+    lists.splice(lists.length - 1, 1, newText);
+  }
+
+  console.log(lists);
 }
 
 /**
