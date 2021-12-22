@@ -31,21 +31,23 @@ function startApp(name) {
  * @param  {string} text data typed by the user
  * @returns {void}
  */
-function onDataReceived(text) {
-  if (text === "quit\n") {
+ function onDataReceived(text) {
+  text = text.trim();
+  if (text === 'quit') {
     quit();
-  } else if (text === "exit\n") {
+  }
+  else if (text === 'exit'){
     exit();
-  } else if (text === "help\n") {
+  }
+  else if(text.split(" ").shift() === 'hello'){
+    hello(text);
+  }
+  else if(text === 'help'){
     help();
-  } else if (text.trim().split(" ")[0] === "hello\n") {
-    hello("");
-  } else if (
-    text.trim().split(" ")[0] === "hello" &&
-    text.split(" ")[1] !== []
-  ) {
-    hello(text.trim().split(" ").slice(1).join(",").replace(",", " "));
-  } else {
+  }
+
+
+  else{
     unknownCommand(text);
   }
 }
@@ -63,16 +65,13 @@ function unknownCommand(c) {
 
 /**
  * Says hello
- *
+ *@param {string}
  * @returns {void}
  */
-function hello(name) {
-  if (name) {
-    console.log(`hello ${name}!`);
-  } else {
-    console.log("hello!");
-  }
+ function hello(text){
+  console.log(text + '!')
 }
+
 /**
  * list possible commands
  *
