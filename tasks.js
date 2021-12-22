@@ -80,7 +80,7 @@ function hello(text) {
  */
 function help() {
   console.log(
-    "possible command\nquit\nexit\nhelp\nhello,\nhello:its a command that prints hello alone and once you add something with alone it will type it too"
+    "possible command\nquit\nexit\nhelp\nhello\nadd\nremove\nlist,\nhello:its a command that prints hello alone and once you add something with alone it will type it too"
   );
 }
 
