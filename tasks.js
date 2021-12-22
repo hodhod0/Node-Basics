@@ -31,6 +31,7 @@ function startApp(name) {
  * @param  {string} text data typed by the user
  * @returns {void}
  */
+ var lists = ["Ahmad","Hadi","Nour"]
  function onDataReceived(text) {
   text = text.trim();
   if (text === 'quit') {
@@ -44,6 +45,15 @@ function startApp(name) {
   }
   else if(text === 'help'){
     help();
+  }
+  else if(text === 'list'){
+    list();
+  }
+  else if(text === 'add'){
+    add();
+  }
+  else if(text === 'remove'){
+    remove();
   }
 
 
@@ -79,6 +89,13 @@ function unknownCommand(c) {
  */
 function help() {
   console.log("possible command\nquit\nexit\nhelp\nhello,\nhello:its a command that prints hello alone and once you add something with alone it will type it too");
+}
+
+function list() {
+ lists.forEach((element ,index) => {
+  console.log(`${index +1}-${element}`);
+  });
+  
 }
 
 /**
