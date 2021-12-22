@@ -35,7 +35,7 @@ var lists = ["Ahmad", "Hadi", "Nour","Salim"];
 function onDataReceived(text) {
   text = text.trim();
   if (text === "quit") {
-    quit();
+    exit();
   } else if (text === "exit") {
     exit();
   } else if (text.split(" ").shift() === "hello") {
@@ -46,8 +46,8 @@ function onDataReceived(text) {
     list();
   } else if (text.trim().split(" ")[0] === "add") {
     add(text);
-  } else if (text === "remove") {
-    remove();
+  } else if (text.trim().split(" ")[0]  === "remove") {
+    remove(text);
   } else {
     unknownCommand(text);
   }
@@ -93,6 +93,19 @@ function list() {
 function add (text){
   let inpt = text.split(" ");
   lists.push(inpt[1])
+}
+
+function remove(text){
+  var name = text.split(" ")[1] ;
+  if (name === "" ){ 
+    console.log("1",name);
+    lists.pop();
+  }else {
+    console.log("2",name);
+    lists.splice(lists.indexOf(name),1);
+  }
+  
+  console.log(lists)//lists[lists.indexOf(text)]
 }
 
 /**
