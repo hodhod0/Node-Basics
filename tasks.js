@@ -96,16 +96,15 @@ function add (text){
 }
 
 function remove(text){
-  var name = text.split(" ")[1] ;
-  if (name === "" ){ 
-    console.log("1",name);
+  var index = text.split(" ")[1] - 1;
+  if(index > lists.length){
+    console.log("not Found");
+  }else if (index === "" ){ 
     lists.pop();
   }else {
-    console.log("2",name);
-    lists.splice(lists.indexOf(name),1);
+    lists.splice(index,1);
   }
-  
-  console.log(lists)//lists[lists.indexOf(text)]
+  console.log(lists)
 }
 
 /**
